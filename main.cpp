@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib> 
 #include <ctime>
+#include <cmath>
 
 using namespace std;
 int message (int n, int M, int m){
@@ -9,10 +10,9 @@ int message (int n, int M, int m){
     }else {
         cout << "Введите число n от [1 до 30]!!! = ";
         cin >> n;
-        message (n, M, m);
+        return message (n, M, m);
     }
 }
-
 int main(){
     const int M = 30;
     const int m = 1;
@@ -48,5 +48,45 @@ int main(){
             cout << array[i] << " ";
         }
     }
-    
+    cout << endl;
+    int min = fabs(array[0]);
+    for (int i = 0; i < n; ++i){
+        if (fabs(array[i]) < min){
+            min = fabs(array[i]);
+        }
+    }
+    cout << "Наименьшее по модулю число = " << min << endl;
+    int sum = 0;
+    for (int i = 0; i < n; ++i){
+        if (array[i] == 0){
+            for (int k = i; k < n; ++k){
+                sum += array[k];
+            }
+            cout << "Одна из сумм = " << sum << " ";
+            sum = 0;
+        }
+    }
+    int* array1 = new int[n];
+    int i1 = 0;
+    int i2 = 0;
+    for(int i = 0; i < n; ++i){
+        int mesto = i % 2;
+        if(mesto == 0){
+            array1[i2] = array[i];
+            i2 += 1;
+            i1 += 1;
+            array[i]=0;
+        }
+    }
+    for(int i = 0; i < n; ++i){
+        if(array[i] != 0){
+        array1[i1] = array[i]; 
+        i1 += 1;
+        }
+    }
+    cout << "Новый масиив: ";
+    for(int i = 0; i < n; ++i){
+        cout << array1[i] << " ";
+    }
+    return 0;
 }
