@@ -84,7 +84,8 @@ int main(){
         }
     }
     for(int i = 0; i < n; ++i){
-        if(array[i] != 0){
+        int mesto = i % 2;
+        if(mesto != 0){
         array1[i1] = array[i]; 
         i1 += 1;
         }
