@@ -57,16 +57,20 @@ int main(){
     }
     cout << "Наименьшее по модулю число = " << min << endl;
     int sum = 0;
-    int pos = 0;
+    int pos = -1;
     for (int i = 0; i < n; ++i){
         if (array[i] == 0){
             pos = i;
         }
     }
-    for (int i = pos; i < n; ++i){
-        sum += array[i];
-    }
-    cout << "Сумма после последнего нулевого члена = " << sum << endl;
+    if (pos == -1){
+        cout << "В этом массиве нет нулевоого элемента" << endl;
+    }else{
+        for (int i = pos; i < n; ++i){
+            sum += array[i];
+        }
+        cout << "Сумма после последнего нулевого члена = " << sum << endl;
+    }    
     int* array1 = new int[n];
     int i1 = 0;
     int i2 = 0;
