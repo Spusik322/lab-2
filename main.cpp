@@ -94,5 +94,7 @@ int main(){
     for(int i = 0; i < n; ++i){
         cout << array1[i] << " ";
     }
+    delete []array;
+    delete []array1;
     return 0;
 }
