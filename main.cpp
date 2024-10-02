@@ -27,7 +27,6 @@ int main(){
     if (b == 1){
         cout << "Введите все числа через пробел ";
         for (int i = 0; i < n; ++i){
-            //cout << "Введите число под №" << i + 1 << " ";
             cin >> array[i];
         }
         cout << "Массив из чисел: ";
@@ -71,30 +70,23 @@ int main(){
         }
         cout << "Сумма после последнего нулевого члена = " << sum << endl;
     }    
-    int* array1 = new int[n];
-    int i1 = 0;
-    int i2 = 0;
-    for(int i = 0; i < n; ++i){
-        int mesto = i % 2;
-        if(mesto == 0){
-            array1[i2] = array[i];
-            i2 += 1;
-            i1 += 1;
-            array[i]=0;
-        }
-    }
-    for(int i = 0; i < n; ++i){
-        int mesto = i % 2;
-        if(mesto != 0){
-        array1[i1] = array[i]; 
-        i1 += 1;
+    int evenindex = 0;
+    for (int i = 0; i < n; ++i) {
+        if (i % 2 == 0) {
+            int temp = array[i];
+            int j = i;
+            while (j > evenindex) {
+                array[j] = array[j - 1];
+                --j;
+            }
+            array[evenindex] = temp;
+            ++evenindex;
         }
     }
     cout << "Новый масиив: ";
     for(int i = 0; i < n; ++i){
-        cout << array1[i] << " ";
+        cout << array[i] << " ";
     }
     delete []array;
-    delete []array1;
     return 0;
 }
